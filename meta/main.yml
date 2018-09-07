@@ -1,3 +1,15 @@
 ---
+galaxy_info:
+  role_name: azure-emulator
+  author: leafnode
+  description: role for azurite azure emulator
+  license: BSD
+  min_ansible_version: 2.5.4 # tested on this version, might work on older versions
+  platforms:
+  - name: Ubuntu
+    versions:
+    - 16.04
+  galaxy_tags: []
+
 dependencies:
-- pm2
+  - pm2
