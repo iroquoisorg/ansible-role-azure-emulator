@@ -1,0 +1,5 @@
+---
+- src: https://github.com/iroquoisorg/ansible-role-pm2.git
+  name: pm2
+  version: master
+  scm: git
