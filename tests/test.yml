@@ -2,6 +2,6 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - nodejs
-    - pm2
+    - iroquoisorg.nodejs
+    - iroquoisorg.pm2
     - ansible-role-azure-emulator
