@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  roles:
+    - role: iroquoisorg.nodejs
+    - role: iroquoisorg.pm2
+    - role: ansible-role-azure-emulator

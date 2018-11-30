@@ -1,7 +1,9 @@
+---
 - name: Install pm2 global package
   npm:
     name: azurite
-    global: yes
+    global: true
+  register: pm2_installed
 
 - name: Prepare directory for azurite data
   file:
@@ -12,7 +14,7 @@
     state: directory
 
 - name: Prepare .npm directory
-  become: yes
+  become: true
   become_user: root
   file:
     path: /var/www/.pm2
@@ -20,27 +22,18 @@
     owner: www-data
     group: www-data
 
-- name: Register status of azurite app
-  become: yes
-  become_user: www-data
-  shell: "pm2 describe azurite | grep status"
-  register: pm2_show_azurite
-  ignore_errors: yes
-  changed_when: false
-
-- name: Remove application from pm2
-  become: yes
-  become_user: www-data
-  shell: pm2 delete azurite
-  ignore_errors: yes
-  when: pm2_show_azurite.stdout.find('online') > -1
-
 - name: Start application with pm2
-  become: yes
+  become: true
   become_user: www-data
-  shell: pm2 start azurite --name=azurite  -- -l /var/lib/azurite
+  command: pm2 start azurite --name=azurite  -- -l /var/lib/azurite
+  when: pm2_installed.changed
+  tags:
+    - skip_ansible_lint
 
 - name: Save the pm2 process list
-  become: yes
+  become: true
   become_user: www-data
-  shell: "pm2 save"
+  command: "pm2 save"
+  when: pm2_installed.changed
+  tags:
+    - skip_ansible_lint

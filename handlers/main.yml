@@ -1,0 +1,11 @@
+---
+- name: Start application with pm2
+  become: true
+  become_user: www-data
+  command: pm2 start azurite --name=azurite  -- -l /var/lib/azurite
+  notify: Save the pm2 process list
+
+- name: Save the pm2 process list
+  become: true
+  become_user: www-data
+  command: "pm2 save"
