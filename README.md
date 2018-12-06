@@ -1,6 +1,6 @@
 # azure-emulator
 
-[![Build Status](https://travis-ci.com/iroquoisorg/ansible-role-azure-emulator.svg?branch=master)](https://travis-ci.com/iroquoisorg/ansible-role-memcached)
+[![Build Status](https://travis-ci.com/iroquoisorg/ansible-role-azure-emulator.svg?branch=master)](https://travis-ci.com/iroquoisorg/ansible-role-azure-emulator)
 
 Ansible role for azure-emulator
 
